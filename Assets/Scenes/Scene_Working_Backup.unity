@@ -1422,7 +1422,7 @@ MonoBehaviour:
   - nodeId: opening
     videoClip: {fileID: 32900000, guid: 366d5fcd05dbb5b478945010fb82a4f1, type: 3}
     hasChoices: 1
-    showChoicesAtSeconds: 1
+    showChoicesAtSeconds: 4.5
     nextNodeId: 
     choice1:
       choiceText: Chill bij vriend
@@ -1434,19 +1434,19 @@ MonoBehaviour:
       choiceText: Pro tikkertje
       targetNodeId: tikkertje_start
   - nodeId: joran_start
-    videoClip: {fileID: 32900000, guid: 366d5fcd05dbb5b478945010fb82a4f1, type: 3}
+    videoClip: {fileID: 32900000, guid: ef68f56866d085445a10ab971522e30f, type: 3}
     hasChoices: 1
-    showChoicesAtSeconds: 5.6
+    showChoicesAtSeconds: 10
     nextNodeId: 
     choice1:
-      choiceText: Box geven
-      targetNodeId: joran_box
+      choiceText: Gsm checken
+      targetNodeId: joran_check
     choice2:
       choiceText: 
       targetNodeId: 
     choice3:
-      choiceText: Hand geven
-      targetNodeId: joran_hand
+      choiceText: Gsm laten liggen
+      targetNodeId: joran_ignore
   - nodeId: mcda_start
     videoClip: {fileID: 32900000, guid: 5ee4c400a07eb9440994952b97e1fb46, type: 3}
     hasChoices: 1
@@ -1475,36 +1475,8 @@ MonoBehaviour:
     choice3:
       choiceText: 
       targetNodeId: 
-  - nodeId: joran_box
-    videoClip: {fileID: 32900000, guid: bb5b282c7fc724847a6763d72f45515c, type: 3}
-    hasChoices: 0
-    showChoicesAtSeconds: 0
-    nextNodeId: joran_binnen
-    choice1:
-      choiceText: 
-      targetNodeId: 
-    choice2:
-      choiceText: 
-      targetNodeId: 
-    choice3:
-      choiceText: 
-      targetNodeId: 
-  - nodeId: joran_hand
-    videoClip: {fileID: 32900000, guid: 40b6b1564bd709a40b23212268c2d071, type: 3}
-    hasChoices: 0
-    showChoicesAtSeconds: 0
-    nextNodeId: joran_binnen
-    choice1:
-      choiceText: 
-      targetNodeId: 
-    choice2:
-      choiceText: 
-      targetNodeId: 
-    choice3:
-      choiceText: 
-      targetNodeId: 
-  - nodeId: joran_binnen
-    videoClip: {fileID: 32900000, guid: a9262c207c3cb704db36dc645df204fd, type: 3}
+  - nodeId: joran_check
+    videoClip: {fileID: 32900000, guid: 903396d31d685584086e3b3e79116ad2, type: 3}
     hasChoices: 0
     showChoicesAtSeconds: 0
     nextNodeId: 
@@ -1517,35 +1489,7 @@ MonoBehaviour:
     choice3:
       choiceText: 
       targetNodeId: 
-  - nodeId: joran_hand
-    videoClip: {fileID: 32900000, guid: a9262c207c3cb704db36dc645df204fd, type: 3}
-    hasChoices: 0
-    showChoicesAtSeconds: 0
-    nextNodeId: 
-    choice1:
-      choiceText: 
-      targetNodeId: 
-    choice2:
-      choiceText: 
-      targetNodeId: 
-    choice3:
-      choiceText: 
-      targetNodeId: 
-  - nodeId: joran_hand
-    videoClip: {fileID: 32900000, guid: a9262c207c3cb704db36dc645df204fd, type: 3}
-    hasChoices: 0
-    showChoicesAtSeconds: 0
-    nextNodeId: 
-    choice1:
-      choiceText: 
-      targetNodeId: 
-    choice2:
-      choiceText: 
-      targetNodeId: 
-    choice3:
-      choiceText: 
-      targetNodeId: 
-  - nodeId: joran_hand
+  - nodeId: joran_ignore
     videoClip: {fileID: 32900000, guid: a9262c207c3cb704db36dc645df204fd, type: 3}
     hasChoices: 0
     showChoicesAtSeconds: 0
