@@ -2170,8 +2170,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 168}
-  m_SizeDelta: {x: 320, y: 200}
+  m_AnchoredPosition: {x: 0, y: 14}
+  m_SizeDelta: {x: 334.3, y: 506.1}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &811312782
 MonoBehaviour:
@@ -3209,7 +3209,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 180, y: -180}
+  m_AnchoredPosition: {x: 180, y: -193.7}
   m_SizeDelta: {x: 310, y: 250}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1316437427
@@ -3262,8 +3262,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 36
-  m_fontSizeBase: 36
+  m_fontSize: 24
+  m_fontSizeBase: 24
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -3901,6 +3901,7 @@ MonoBehaviour:
     phoneOverlayDuration: 3
     phoneOverlayHeader: Groupchat
     phoneOverlayMessage: You opened your phone.
+    timedPhoneMessages: []
   - nodeId: joran_start
     videoClip: {fileID: 32900000, guid: 366d5fcd05dbb5b478945010fb82a4f1, type: 3}
     hasChoices: 1
@@ -3925,6 +3926,7 @@ MonoBehaviour:
     phoneOverlayDuration: 3
     phoneOverlayHeader: Groupchat
     phoneOverlayMessage: You opened your phone.
+    timedPhoneMessages: []
   - nodeId: mcda_start
     videoClip: {fileID: 32900000, guid: 5ee4c400a07eb9440994952b97e1fb46, type: 3}
     hasChoices: 1
@@ -3949,6 +3951,7 @@ MonoBehaviour:
     phoneOverlayDuration: 3
     phoneOverlayHeader: Groupchat
     phoneOverlayMessage: You opened your phone.
+    timedPhoneMessages: []
   - nodeId: tikkertje_start
     videoClip: {fileID: 32900000, guid: e58409cd9b2693b4d90fb8c648ba1432, type: 3}
     hasChoices: 1
@@ -3973,6 +3976,7 @@ MonoBehaviour:
     phoneOverlayDuration: 3
     phoneOverlayHeader: Groupchat
     phoneOverlayMessage: You opened your phone.
+    timedPhoneMessages: []
   - nodeId: joran_box
     videoClip: {fileID: 32900000, guid: bb5b282c7fc724847a6763d72f45515c, type: 3}
     hasChoices: 0
@@ -3997,6 +4001,7 @@ MonoBehaviour:
     phoneOverlayDuration: 3
     phoneOverlayHeader: Groupchat
     phoneOverlayMessage: You opened your phone.
+    timedPhoneMessages: []
   - nodeId: joran_hand
     videoClip: {fileID: 32900000, guid: 40b6b1564bd709a40b23212268c2d071, type: 3}
     hasChoices: 0
@@ -4021,6 +4026,7 @@ MonoBehaviour:
     phoneOverlayDuration: 3
     phoneOverlayHeader: Groupchat
     phoneOverlayMessage: You opened your phone.
+    timedPhoneMessages: []
   - nodeId: joran_binnen
     videoClip: {fileID: 32900000, guid: ef68f56866d085445a10ab971522e30f, type: 3}
     hasChoices: 1
@@ -4045,6 +4051,7 @@ MonoBehaviour:
     phoneOverlayDuration: 3
     phoneOverlayHeader: Groupchat
     phoneOverlayMessage: test test
+    timedPhoneMessages: []
   - nodeId: zin_gamen
     videoClip: {fileID: 32900000, guid: a0ed83a7ca4ea1945827d56cc84898ac, type: 3}
     hasChoices: 1
@@ -4069,6 +4076,7 @@ MonoBehaviour:
     phoneOverlayDuration: 3
     phoneOverlayHeader: Groupchat
     phoneOverlayMessage: You opened your phone.
+    timedPhoneMessages: []
   - nodeId: ChillJ_gop
     videoClip: {fileID: 32900000, guid: 903396d31d685584086e3b3e79116ad2, type: 3}
     hasChoices: 0
@@ -4093,6 +4101,19 @@ MonoBehaviour:
     phoneOverlayDuration: 14
     phoneOverlayHeader: Groupchat
     phoneOverlayMessage: You opened your phone.
+    timedPhoneMessages:
+    - delay: 0
+      sender: 
+      message: Dees echt craazyyyy
+    - delay: 2
+      sender: 
+      message: like hij gaat gwn tegen een pro
+    - delay: 6
+      sender: 
+      message: HIJ HEEFT HEM GERAAKT WAAATT!!!!
+    - delay: 8
+      sender: 
+      message: JE MOEST HIER ECHT ZIJN GEWEEST!!!
   - nodeId: ChillJ_gweg
     videoClip: {fileID: 32900000, guid: a9262c207c3cb704db36dc645df204fd, type: 3}
     hasChoices: 0
@@ -4117,6 +4138,7 @@ MonoBehaviour:
     phoneOverlayDuration: 3
     phoneOverlayHeader: Groupchat
     phoneOverlayMessage: You opened your phone.
+    timedPhoneMessages: []
   - nodeId: gaming_op
     videoClip: {fileID: 32900000, guid: 5ee4c400a07eb9440994952b97e1fb46, type: 3}
     hasChoices: 0
@@ -4141,6 +4163,7 @@ MonoBehaviour:
     phoneOverlayDuration: 3
     phoneOverlayHeader: Groupchat
     phoneOverlayMessage: You opened your phone.
+    timedPhoneMessages: []
   - nodeId: gaming_lig
     videoClip: {fileID: 32900000, guid: 9fe5ba6ea08e387418ac06e34d4d8816, type: 3}
     hasChoices: 1
@@ -4165,6 +4188,7 @@ MonoBehaviour:
     phoneOverlayDuration: 3
     phoneOverlayHeader: Groupchat
     phoneOverlayMessage: You opened your phone.
+    timedPhoneMessages: []
   - nodeId: gamen_s
     videoClip: {fileID: 32900000, guid: faadc90d245fe304bbdd579877d8626e, type: 3}
     hasChoices: 0
@@ -4189,6 +4213,7 @@ MonoBehaviour:
     phoneOverlayDuration: 3
     phoneOverlayHeader: Groupchat
     phoneOverlayMessage: You opened your phone.
+    timedPhoneMessages: []
   - nodeId: gs_ant
     videoClip: {fileID: 32900000, guid: 00ac4973899f66f439cc31883526c44b, type: 3}
     hasChoices: 0
@@ -4213,6 +4238,7 @@ MonoBehaviour:
     phoneOverlayDuration: 3
     phoneOverlayHeader: Groupchat
     phoneOverlayMessage: You opened your phone.
+    timedPhoneMessages: []
   - nodeId: gg_ant
     videoClip: {fileID: 32900000, guid: 5eaf742ea2e172f4993baaaee48b942c, type: 3}
     hasChoices: 0
@@ -4237,6 +4263,7 @@ MonoBehaviour:
     phoneOverlayDuration: 3
     phoneOverlayHeader: Groupchat
     phoneOverlayMessage: You opened your phone.
+    timedPhoneMessages: []
   - nodeId: Gaming_G
     videoClip: {fileID: 32900000, guid: 68bf2b33c00360249a92b6adf37860c6, type: 3}
     hasChoices: 0
@@ -4261,6 +4288,7 @@ MonoBehaviour:
     phoneOverlayDuration: 3
     phoneOverlayHeader: Groupchat
     phoneOverlayMessage: You opened your phone.
+    timedPhoneMessages: []
   - nodeId: ChillJ_EndingGoed
     videoClip: {fileID: 32900000, guid: a4028cb82101435428dc39bd4e933117, type: 3}
     hasChoices: 0
@@ -4285,6 +4313,7 @@ MonoBehaviour:
     phoneOverlayDuration: 3
     phoneOverlayHeader: Groupchat
     phoneOverlayMessage: You opened your phone.
+    timedPhoneMessages: []
   - nodeId: ChillJ_EndingSlecht
     videoClip: {fileID: 32900000, guid: c94d1bb708a98df43aedbbaceff0455e, type: 3}
     hasChoices: 0
@@ -4309,6 +4338,7 @@ MonoBehaviour:
     phoneOverlayDuration: 3
     phoneOverlayHeader: Groupchat
     phoneOverlayMessage: You opened your phone.
+    timedPhoneMessages: []
   - nodeId: ChillJ_EndingSlecht
     videoClip: {fileID: 32900000, guid: c94d1bb708a98df43aedbbaceff0455e, type: 3}
     hasChoices: 0
@@ -4333,6 +4363,7 @@ MonoBehaviour:
     phoneOverlayDuration: 3
     phoneOverlayHeader: Groupchat
     phoneOverlayMessage: You opened your phone.
+    timedPhoneMessages: []
   - nodeId: ChillJ_EndingSlecht
     videoClip: {fileID: 32900000, guid: c94d1bb708a98df43aedbbaceff0455e, type: 3}
     hasChoices: 0
@@ -4357,6 +4388,7 @@ MonoBehaviour:
     phoneOverlayDuration: 3
     phoneOverlayHeader: Groupchat
     phoneOverlayMessage: You opened your phone.
+    timedPhoneMessages: []
 --- !u!4 &1670237935
 Transform:
   m_ObjectHideFlags: 0

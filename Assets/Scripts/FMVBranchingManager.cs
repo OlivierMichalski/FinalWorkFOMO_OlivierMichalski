@@ -16,6 +16,16 @@ public class FMVBranchingManager : MonoBehaviour
     }
 
     [Serializable]
+    public class PhoneTimedMessage
+    {
+        public float delay = 0f;
+        public string sender = "Groupchat";
+
+        [TextArea(2, 4)]
+        public string message = "New message.";
+    }
+
+    [Serializable]
     public class FMVNode
     {
         public string nodeId;
@@ -45,11 +55,14 @@ public class FMVBranchingManager : MonoBehaviour
         [Header("Phone overlay")]
         public bool showPhoneOverlay;
         public float phoneOverlayAtSeconds = 0.2f;
-        public float phoneOverlayDuration = 3f;
+        public float phoneOverlayDuration = 4f;
         public string phoneOverlayHeader = "Groupchat";
 
         [TextArea(3, 6)]
         public string phoneOverlayMessage = "You opened your phone.";
+
+        [Header("Timed phone messages")]
+        public List<PhoneTimedMessage> timedPhoneMessages = new List<PhoneTimedMessage>();
     }
 
     [Header("Video")]
@@ -135,12 +148,7 @@ public class FMVBranchingManager : MonoBehaviour
         if (currentNode.showPhoneOverlay && !phoneOverlayShown && videoPlayer.time >= currentNode.phoneOverlayAtSeconds)
         {
             phoneOverlayShown = true;
-
-            ShowPhoneOverlay(
-                currentNode.phoneOverlayHeader,
-                currentNode.phoneOverlayMessage,
-                currentNode.phoneOverlayDuration
-            );
+            ShowPhoneOverlay(currentNode);
         }
 
         if (currentNode.hasChoices && !choicesShown && videoPlayer.time >= currentNode.showChoicesAtSeconds)
@@ -331,34 +339,92 @@ public class FMVBranchingManager : MonoBehaviour
             notificationCanvasGroup.alpha = 0f;
     }
 
-    private void ShowPhoneOverlay(string header, string message, float duration)
+    private void ShowPhoneOverlay(FMVNode node)
     {
         if (phoneOverlayCoroutine != null)
             StopCoroutine(phoneOverlayCoroutine);
 
-        phoneOverlayCoroutine = StartCoroutine(PhoneOverlayRoutine(header, message, duration));
+        phoneOverlayCoroutine = StartCoroutine(PhoneOverlayRoutine(node));
     }
 
-    private IEnumerator PhoneOverlayRoutine(string header, string message, float duration)
+    private IEnumerator PhoneOverlayRoutine(FMVNode node)
     {
         if (phoneOverlay != null)
             phoneOverlay.SetActive(true);
 
         if (phoneHeaderText != null)
-            phoneHeaderText.text = header;
+            phoneHeaderText.text = node.phoneOverlayHeader;
 
         if (phoneMessageText != null)
-            phoneMessageText.text = message;
+            phoneMessageText.text = "";
 
-        if (duration > 0f)
+        List<PhoneTimedMessage> messages = new List<PhoneTimedMessage>();
+
+        if (node.timedPhoneMessages != null)
         {
-            yield return new WaitForSeconds(duration);
-
-            if (phoneOverlay != null)
-                phoneOverlay.SetActive(false);
+            foreach (PhoneTimedMessage msg in node.timedPhoneMessages)
+            {
+                if (msg != null)
+                    messages.Add(msg);
+            }
         }
 
+        messages.Sort((a, b) => a.delay.CompareTo(b.delay));
+
+        if (messages.Count == 0 && phoneMessageText != null)
+        {
+            phoneMessageText.text = node.phoneOverlayMessage;
+        }
+
+        float elapsed = 0f;
+        int messageIndex = 0;
+
+        while (true)
+        {
+            elapsed += Time.deltaTime;
+
+            while (messageIndex < messages.Count && elapsed >= messages[messageIndex].delay)
+            {
+                AddPhoneMessage(messages[messageIndex]);
+                messageIndex++;
+            }
+
+            if (node.phoneOverlayDuration > 0f && elapsed >= node.phoneOverlayDuration)
+            {
+                break;
+            }
+
+            if (node.phoneOverlayDuration <= 0f && messageIndex >= messages.Count)
+            {
+                phoneOverlayCoroutine = null;
+                yield break;
+            }
+
+            yield return null;
+        }
+
+        if (phoneOverlay != null)
+            phoneOverlay.SetActive(false);
+
         phoneOverlayCoroutine = null;
+    }
+
+    private void AddPhoneMessage(PhoneTimedMessage timedMessage)
+    {
+        if (phoneMessageText == null)
+            return;
+
+        string sender = timedMessage.sender;
+        string message = timedMessage.message;
+
+        if (string.IsNullOrWhiteSpace(sender))
+            sender = "Message";
+
+        string formattedMessage =
+            "<b>" + sender + "</b>\n" +
+            message + "\n\n";
+
+        phoneMessageText.text += formattedMessage;
     }
 
     private void HidePhoneOverlayImmediate()
