@@ -1504,7 +1504,147 @@ MonoBehaviour:
       choiceText: 
       targetNodeId: 
   - nodeId: joran_binnen
+    videoClip: {fileID: 32900000, guid: ef68f56866d085445a10ab971522e30f, type: 3}
+    hasChoices: 1
+    showChoicesAtSeconds: 22
+    nextNodeId: 
+    choice1:
+      choiceText: Pak gsm op
+      targetNodeId: ChillJ_gop
+    choice2:
+      choiceText: 
+      targetNodeId: 
+    choice3:
+      choiceText: Laat gsm liggen
+      targetNodeId: ChillJ_gweg
+  - nodeId: zin_gamen
+    videoClip: {fileID: 32900000, guid: a0ed83a7ca4ea1945827d56cc84898ac, type: 3}
+    hasChoices: 1
+    showChoicesAtSeconds: 13
+    nextNodeId: 
+    choice1:
+      choiceText: Pak gsm op
+      targetNodeId: gaming_op
+    choice2:
+      choiceText: 
+      targetNodeId: 
+    choice3:
+      choiceText: Laat gsm liggen
+      targetNodeId: gaming_lig
+  - nodeId: ChillJ_gop
+    videoClip: {fileID: 32900000, guid: 903396d31d685584086e3b3e79116ad2, type: 3}
+    hasChoices: 0
+    showChoicesAtSeconds: 0
+    nextNodeId: zin_gamen
+    choice1:
+      choiceText: 
+      targetNodeId: 
+    choice2:
+      choiceText: 
+      targetNodeId: 
+    choice3:
+      choiceText: 
+      targetNodeId: 
+  - nodeId: ChillJ_gweg
     videoClip: {fileID: 32900000, guid: a9262c207c3cb704db36dc645df204fd, type: 3}
+    hasChoices: 0
+    showChoicesAtSeconds: 0
+    nextNodeId: zin_gamen
+    choice1:
+      choiceText: 
+      targetNodeId: 
+    choice2:
+      choiceText: 
+      targetNodeId: 
+    choice3:
+      choiceText: 
+      targetNodeId: 
+  - nodeId: gaming_op
+    videoClip: {fileID: 32900000, guid: 5ee4c400a07eb9440994952b97e1fb46, type: 3}
+    hasChoices: 0
+    showChoicesAtSeconds: 0
+    nextNodeId: gamen_s
+    choice1:
+      choiceText: 
+      targetNodeId: 
+    choice2:
+      choiceText: 
+      targetNodeId: 
+    choice3:
+      choiceText: 
+      targetNodeId: 
+  - nodeId: gaming_lig
+    videoClip: {fileID: 32900000, guid: 9fe5ba6ea08e387418ac06e34d4d8816, type: 3}
+    hasChoices: 1
+    showChoicesAtSeconds: 26
+    nextNodeId: 
+    choice1:
+      choiceText: Serieus antwoorden
+      targetNodeId: gs_ant
+    choice2:
+      choiceText: 
+      targetNodeId: 
+    choice3:
+      choiceText: Grap maken
+      targetNodeId: gg_ant
+  - nodeId: gamen_s
+    videoClip: {fileID: 32900000, guid: faadc90d245fe304bbdd579877d8626e, type: 3}
+    hasChoices: 0
+    showChoicesAtSeconds: 0
+    nextNodeId: ChillJ_EndingSlecht
+    choice1:
+      choiceText: 
+      targetNodeId: 
+    choice2:
+      choiceText: 
+      targetNodeId: 
+    choice3:
+      choiceText: 
+      targetNodeId: 
+  - nodeId: gs_ant
+    videoClip: {fileID: 32900000, guid: 00ac4973899f66f439cc31883526c44b, type: 3}
+    hasChoices: 0
+    showChoicesAtSeconds: 0
+    nextNodeId: Gaming_G
+    choice1:
+      choiceText: 
+      targetNodeId: 
+    choice2:
+      choiceText: 
+      targetNodeId: 
+    choice3:
+      choiceText: 
+      targetNodeId: 
+  - nodeId: gg_ant
+    videoClip: {fileID: 32900000, guid: 5eaf742ea2e172f4993baaaee48b942c, type: 3}
+    hasChoices: 0
+    showChoicesAtSeconds: 0
+    nextNodeId: Gaming_G
+    choice1:
+      choiceText: 
+      targetNodeId: 
+    choice2:
+      choiceText: 
+      targetNodeId: 
+    choice3:
+      choiceText: 
+      targetNodeId: 
+  - nodeId: Gaming_G
+    videoClip: {fileID: 32900000, guid: 68bf2b33c00360249a92b6adf37860c6, type: 3}
+    hasChoices: 0
+    showChoicesAtSeconds: 0
+    nextNodeId: ChillJ_EndingGoed
+    choice1:
+      choiceText: 
+      targetNodeId: 
+    choice2:
+      choiceText: 
+      targetNodeId: 
+    choice3:
+      choiceText: 
+      targetNodeId: 
+  - nodeId: ChillJ_EndingGoed
+    videoClip: {fileID: 32900000, guid: a4028cb82101435428dc39bd4e933117, type: 3}
     hasChoices: 0
     showChoicesAtSeconds: 0
     nextNodeId: 
@@ -1517,8 +1657,8 @@ MonoBehaviour:
     choice3:
       choiceText: 
       targetNodeId: 
-  - nodeId: joran_hand
-    videoClip: {fileID: 32900000, guid: a9262c207c3cb704db36dc645df204fd, type: 3}
+  - nodeId: ChillJ_EndingSlecht
+    videoClip: {fileID: 32900000, guid: c94d1bb708a98df43aedbbaceff0455e, type: 3}
     hasChoices: 0
     showChoicesAtSeconds: 0
     nextNodeId: 
@@ -1531,8 +1671,8 @@ MonoBehaviour:
     choice3:
       choiceText: 
       targetNodeId: 
-  - nodeId: joran_hand
-    videoClip: {fileID: 32900000, guid: a9262c207c3cb704db36dc645df204fd, type: 3}
+  - nodeId: 
+    videoClip: {fileID: 0}
     hasChoices: 0
     showChoicesAtSeconds: 0
     nextNodeId: 
@@ -1545,8 +1685,8 @@ MonoBehaviour:
     choice3:
       choiceText: 
       targetNodeId: 
-  - nodeId: joran_hand
-    videoClip: {fileID: 32900000, guid: a9262c207c3cb704db36dc645df204fd, type: 3}
+  - nodeId: 
+    videoClip: {fileID: 0}
     hasChoices: 0
     showChoicesAtSeconds: 0
     nextNodeId: 
