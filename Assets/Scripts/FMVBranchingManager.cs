@@ -136,6 +136,26 @@ public class FMVBranchingManager : MonoBehaviour
     public Button replayButton;
     public Button homeButton;
 
+    [Header("Audio - Sound Effects")]
+    public AudioSource sfxAudioSource;
+    public AudioClip notificationSound;
+
+    [Range(0f, 1f)]
+    public float notificationVolume = 0.7f;
+
+    public bool playSoundOnTimedPhoneMessages = true;
+
+    [Header("Audio - Ambient")]
+    public AudioSource ambientAudioSource;
+    public AudioClip startScreenAmbient;
+    public AudioClip endingScreenAmbient;
+
+    [Range(0f, 1f)]
+    public float startAmbientVolume = 0.25f;
+
+    [Range(0f, 1f)]
+    public float endingAmbientVolume = 0.25f;
+
     [Header("Story")]
     public string startNodeId = "opening";
     public List<FMVNode> nodes = new List<FMVNode>();
@@ -167,6 +187,8 @@ public class FMVBranchingManager : MonoBehaviour
 
         if (startCanvas != null)
             startCanvas.SetActive(true);
+
+        PlayAmbient(startScreenAmbient, startAmbientVolume);
 
         if (playButton != null)
         {
@@ -252,6 +274,8 @@ public class FMVBranchingManager : MonoBehaviour
 
         gameStarted = true;
 
+        StopAmbient();
+
         if (startCanvas != null)
             startCanvas.SetActive(false);
 
@@ -263,6 +287,8 @@ public class FMVBranchingManager : MonoBehaviour
         BuildNodeLookup();
 
         gameStarted = true;
+
+        StopAmbient();
 
         HideEndingImmediate();
         HideChoices();
@@ -295,6 +321,8 @@ public class FMVBranchingManager : MonoBehaviour
 
         if (startCanvas != null)
             startCanvas.SetActive(true);
+
+        PlayAmbient(startScreenAmbient, startAmbientVolume);
     }
 
     public void PlayNode(string nodeId)
@@ -472,6 +500,8 @@ public class FMVBranchingManager : MonoBehaviour
         if (notificationPopup == null)
             return;
 
+        PlayNotificationSound();
+
         if (notificationCoroutine != null)
             StopCoroutine(notificationCoroutine);
 
@@ -583,6 +613,10 @@ public class FMVBranchingManager : MonoBehaviour
             while (messageIndex < messages.Count && elapsed >= messages[messageIndex].delay)
             {
                 AddPhoneMessage(messages[messageIndex]);
+
+                if (playSoundOnTimedPhoneMessages)
+                    PlayNotificationSound();
+
                 messageIndex++;
             }
 
@@ -652,6 +686,8 @@ public class FMVBranchingManager : MonoBehaviour
         HideNotificationImmediate();
         HidePhoneOverlayImmediate();
         HideEndingButtons();
+
+        PlayAmbient(endingScreenAmbient, endingAmbientVolume);
 
         if (videoPlayer != null)
             videoPlayer.Stop();
@@ -868,6 +904,36 @@ public class FMVBranchingManager : MonoBehaviour
 
         if (endingText != null)
             endingText.text = "";
+    }
+
+    private void PlayNotificationSound()
+    {
+        if (sfxAudioSource == null || notificationSound == null)
+            return;
+
+        sfxAudioSource.PlayOneShot(notificationSound, notificationVolume);
+    }
+
+    private void PlayAmbient(AudioClip clip, float volume)
+    {
+        if (ambientAudioSource == null)
+            return;
+
+        ambientAudioSource.Stop();
+
+        if (clip == null)
+            return;
+
+        ambientAudioSource.clip = clip;
+        ambientAudioSource.volume = volume;
+        ambientAudioSource.loop = true;
+        ambientAudioSource.Play();
+    }
+
+    private void StopAmbient()
+    {
+        if (ambientAudioSource != null)
+            ambientAudioSource.Stop();
     }
 
     private void OnVideoFinished(VideoPlayer vp)
