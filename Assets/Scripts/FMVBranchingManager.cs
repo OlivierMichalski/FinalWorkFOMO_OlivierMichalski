@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Text;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.Video;
@@ -23,6 +24,25 @@ public class FMVBranchingManager : MonoBehaviour
 
         [TextArea(2, 4)]
         public string message = "New message.";
+    }
+
+    [Serializable]
+    public class EndingTextPart
+    {
+        [TextArea(3, 10)]
+        public string text;
+
+        public float displayDuration = 4f;
+        public float fadeTime = 0.5f;
+
+        [Header("Line by line reveal")]
+        public bool revealLineByLine = false;
+        public bool fadeInEachLine = true;
+        public float lineDelay = 0.7f;
+        public float lineFadeTime = 0.35f;
+
+        public float pauseAfter = 0.4f;
+        public bool keepOnScreen = false;
     }
 
     [Serializable]
@@ -63,6 +83,12 @@ public class FMVBranchingManager : MonoBehaviour
 
         [Header("Timed phone messages")]
         public List<PhoneTimedMessage> timedPhoneMessages = new List<PhoneTimedMessage>();
+
+        [Header("Ending screen")]
+        public bool showEndingOnVideoEnd;
+        public float endingFadeInTime = 0.8f;
+        public bool showEndingButtonsOnComplete = true;
+        public List<EndingTextPart> endingTextParts = new List<EndingTextPart>();
     }
 
     [Header("Video")]
@@ -94,6 +120,16 @@ public class FMVBranchingManager : MonoBehaviour
     public TMP_Text phoneHeaderText;
     public TMP_Text phoneMessageText;
 
+    [Header("Ending UI")]
+    public GameObject endingOverlay;
+    public CanvasGroup endingCanvasGroup;
+    public TMP_Text endingText;
+
+    [Header("Ending Buttons UI")]
+    public GameObject endingButtonsPanel;
+    public Button replayButton;
+    public Button homeButton;
+
     [Header("Story")]
     public string startNodeId = "opening";
     public List<FMVNode> nodes = new List<FMVNode>();
@@ -105,9 +141,11 @@ public class FMVBranchingManager : MonoBehaviour
     private bool choicesShown = false;
     private bool notificationShown = false;
     private bool phoneOverlayShown = false;
+    private bool endingStarted = false;
 
     private Coroutine notificationCoroutine;
     private Coroutine phoneOverlayCoroutine;
+    private Coroutine endingCoroutine;
 
     void Awake()
     {
@@ -116,12 +154,28 @@ public class FMVBranchingManager : MonoBehaviour
         HideChoices();
         HideNotificationImmediate();
         HidePhoneOverlayImmediate();
+        HideEndingImmediate();
 
         if (startCanvas != null)
             startCanvas.SetActive(true);
 
         if (playButton != null)
+        {
+            playButton.onClick.RemoveAllListeners();
             playButton.onClick.AddListener(StartGame);
+        }
+
+        if (replayButton != null)
+        {
+            replayButton.onClick.RemoveAllListeners();
+            replayButton.onClick.AddListener(ReplayGame);
+        }
+
+        if (homeButton != null)
+        {
+            homeButton.onClick.RemoveAllListeners();
+            homeButton.onClick.AddListener(GoToHomeScreen);
+        }
 
         if (videoPlayer != null)
             videoPlayer.loopPointReached += OnVideoFinished;
@@ -133,6 +187,7 @@ public class FMVBranchingManager : MonoBehaviour
         if (currentNode == null) return;
         if (videoPlayer == null) return;
         if (videoPlayer.clip == null) return;
+        if (endingStarted) return;
 
         if (currentNode.showNotification && !notificationShown && videoPlayer.time >= currentNode.notificationAtSeconds)
         {
@@ -183,12 +238,52 @@ public class FMVBranchingManager : MonoBehaviour
 
     public void StartGame()
     {
+        BuildNodeLookup();
+
         gameStarted = true;
 
         if (startCanvas != null)
             startCanvas.SetActive(false);
 
         PlayNode(startNodeId);
+    }
+
+    public void ReplayGame()
+    {
+        BuildNodeLookup();
+
+        gameStarted = true;
+
+        HideEndingImmediate();
+        HideChoices();
+        HideNotificationImmediate();
+        HidePhoneOverlayImmediate();
+
+        if (startCanvas != null)
+            startCanvas.SetActive(false);
+
+        PlayNode(startNodeId);
+    }
+
+    public void GoToHomeScreen()
+    {
+        gameStarted = false;
+        endingStarted = false;
+        currentNode = null;
+
+        HideChoices();
+        HideNotificationImmediate();
+        HidePhoneOverlayImmediate();
+        HideEndingImmediate();
+
+        if (videoPlayer != null)
+        {
+            videoPlayer.Stop();
+            videoPlayer.clip = null;
+        }
+
+        if (startCanvas != null)
+            startCanvas.SetActive(true);
     }
 
     public void PlayNode(string nodeId)
@@ -204,10 +299,12 @@ public class FMVBranchingManager : MonoBehaviour
         choicesShown = false;
         notificationShown = false;
         phoneOverlayShown = false;
+        endingStarted = false;
 
         HideChoices();
         HideNotificationImmediate();
         HidePhoneOverlayImmediate();
+        HideEndingImmediate();
 
         if (videoPlayer == null)
         {
@@ -439,6 +536,240 @@ public class FMVBranchingManager : MonoBehaviour
             phoneOverlay.SetActive(false);
     }
 
+    private void StartEndingSequence(FMVNode node)
+    {
+        if (endingCoroutine != null)
+            StopCoroutine(endingCoroutine);
+
+        endingCoroutine = StartCoroutine(EndingRoutine(node));
+    }
+
+    private IEnumerator EndingRoutine(FMVNode node)
+    {
+        endingStarted = true;
+
+        HideChoices();
+        HideNotificationImmediate();
+        HidePhoneOverlayImmediate();
+        HideEndingButtons();
+
+        if (videoPlayer != null)
+            videoPlayer.Stop();
+
+        if (endingOverlay != null)
+            endingOverlay.SetActive(true);
+
+        if (endingCanvasGroup == null && endingOverlay != null)
+            endingCanvasGroup = endingOverlay.GetComponent<CanvasGroup>();
+
+        if (endingCanvasGroup == null && endingOverlay != null)
+            endingCanvasGroup = endingOverlay.AddComponent<CanvasGroup>();
+
+        if (endingCanvasGroup != null)
+        {
+            endingCanvasGroup.interactable = true;
+            endingCanvasGroup.blocksRaycasts = true;
+            endingCanvasGroup.alpha = 0f;
+
+            for (float t = 0; t < node.endingFadeInTime; t += Time.deltaTime)
+            {
+                endingCanvasGroup.alpha = Mathf.Lerp(0f, 1f, t / node.endingFadeInTime);
+                yield return null;
+            }
+
+            endingCanvasGroup.alpha = 1f;
+        }
+
+        if (endingText != null)
+        {
+            endingText.richText = true;
+            endingText.text = "";
+            SetEndingTextAlpha(0f);
+        }
+
+        if (node.endingTextParts == null || node.endingTextParts.Count == 0)
+        {
+            Debug.LogWarning("Ending started, but no ending text parts were added.");
+            ShowEndingButtonsIfNeeded(node);
+            yield break;
+        }
+
+        foreach (EndingTextPart part in node.endingTextParts)
+        {
+            if (part == null) continue;
+
+            if (endingText != null)
+                endingText.text = "";
+
+            if (part.revealLineByLine)
+            {
+                SetEndingTextAlpha(1f);
+                yield return StartCoroutine(RevealTextLineByLine(part));
+            }
+            else
+            {
+                if (endingText != null)
+                    endingText.text = part.text;
+
+                yield return StartCoroutine(FadeEndingText(0f, 1f, part.fadeTime));
+            }
+
+            yield return new WaitForSeconds(part.displayDuration);
+
+            if (part.keepOnScreen)
+            {
+                ShowEndingButtonsIfNeeded(node);
+                yield break;
+            }
+
+            yield return StartCoroutine(FadeEndingText(1f, 0f, part.fadeTime));
+
+            if (part.pauseAfter > 0f)
+                yield return new WaitForSeconds(part.pauseAfter);
+        }
+
+        ShowEndingButtonsIfNeeded(node);
+        endingCoroutine = null;
+    }
+
+    private IEnumerator RevealTextLineByLine(EndingTextPart part)
+    {
+        if (endingText == null)
+            yield break;
+
+        string[] lines = part.text.Split(new[] { "\r\n", "\n" }, StringSplitOptions.None);
+        endingText.richText = true;
+        endingText.text = "";
+
+        for (int i = 0; i < lines.Length; i++)
+        {
+            if (part.fadeInEachLine && !string.IsNullOrWhiteSpace(lines[i]))
+            {
+                float fadeTime = Mathf.Max(0.01f, part.lineFadeTime);
+
+                for (float t = 0; t < fadeTime; t += Time.deltaTime)
+                {
+                    float progress = t / fadeTime;
+                    int alpha = Mathf.RoundToInt(Mathf.Lerp(0, 255, progress));
+                    endingText.text = BuildLineFadeText(lines, i, alpha);
+                    yield return null;
+                }
+
+                endingText.text = BuildLineFadeText(lines, i, 255);
+            }
+            else
+            {
+                endingText.text = BuildLineFadeText(lines, i, 255);
+            }
+
+            yield return new WaitForSeconds(part.lineDelay);
+        }
+    }
+
+    private string BuildLineFadeText(string[] lines, int currentLineIndex, int currentAlpha)
+    {
+        StringBuilder builder = new StringBuilder();
+
+        currentAlpha = Mathf.Clamp(currentAlpha, 0, 255);
+        string currentAlphaHex = currentAlpha.ToString("X2");
+
+        for (int i = 0; i < lines.Length; i++)
+        {
+            if (i > 0)
+                builder.Append("\n");
+
+            if (i < currentLineIndex)
+            {
+                builder.Append("<alpha=#FF>");
+                builder.Append(lines[i]);
+            }
+            else if (i == currentLineIndex)
+            {
+                builder.Append("<alpha=#");
+                builder.Append(currentAlphaHex);
+                builder.Append(">");
+                builder.Append(lines[i]);
+            }
+            else
+            {
+                builder.Append("<alpha=#00>");
+                builder.Append(lines[i]);
+            }
+        }
+
+        builder.Append("<alpha=#FF>");
+        return builder.ToString();
+    }
+
+    private IEnumerator FadeEndingText(float from, float to, float duration)
+    {
+        if (endingText == null)
+            yield break;
+
+        if (duration <= 0f)
+        {
+            SetEndingTextAlpha(to);
+            yield break;
+        }
+
+        for (float t = 0; t < duration; t += Time.deltaTime)
+        {
+            float alpha = Mathf.Lerp(from, to, t / duration);
+            SetEndingTextAlpha(alpha);
+            yield return null;
+        }
+
+        SetEndingTextAlpha(to);
+    }
+
+    private void SetEndingTextAlpha(float alpha)
+    {
+        if (endingText == null)
+            return;
+
+        Color color = endingText.color;
+        color.a = alpha;
+        endingText.color = color;
+    }
+
+    private void ShowEndingButtonsIfNeeded(FMVNode node)
+    {
+        if (node != null && node.showEndingButtonsOnComplete)
+            ShowEndingButtons();
+    }
+
+    private void ShowEndingButtons()
+    {
+        if (endingButtonsPanel != null)
+            endingButtonsPanel.SetActive(true);
+    }
+
+    private void HideEndingButtons()
+    {
+        if (endingButtonsPanel != null)
+            endingButtonsPanel.SetActive(false);
+    }
+
+    private void HideEndingImmediate()
+    {
+        if (endingCoroutine != null)
+        {
+            StopCoroutine(endingCoroutine);
+            endingCoroutine = null;
+        }
+
+        HideEndingButtons();
+
+        if (endingOverlay != null)
+            endingOverlay.SetActive(false);
+
+        if (endingCanvasGroup != null)
+            endingCanvasGroup.alpha = 0f;
+
+        if (endingText != null)
+            endingText.text = "";
+    }
+
     private void OnVideoFinished(VideoPlayer vp)
     {
         if (currentNode == null)
@@ -446,6 +777,12 @@ public class FMVBranchingManager : MonoBehaviour
 
         if (currentNode.hasChoices)
             return;
+
+        if (currentNode.showEndingOnVideoEnd)
+        {
+            StartEndingSequence(currentNode);
+            return;
+        }
 
         if (!string.IsNullOrWhiteSpace(currentNode.nextNodeId))
         {
