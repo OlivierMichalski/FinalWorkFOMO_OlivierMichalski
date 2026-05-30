@@ -120,6 +120,12 @@ public class FMVBranchingManager : MonoBehaviour
     public TMP_Text phoneHeaderText;
     public TMP_Text phoneMessageText;
 
+    [Header("Clip Transition Fade")]
+    public GameObject clipFadeOverlay;
+    public CanvasGroup clipFadeCanvasGroup;
+    public bool useClipFade = true;
+    public float clipFadeTime = 0.25f;
+
     [Header("Ending UI")]
     public GameObject endingOverlay;
     public CanvasGroup endingCanvasGroup;
@@ -142,10 +148,12 @@ public class FMVBranchingManager : MonoBehaviour
     private bool notificationShown = false;
     private bool phoneOverlayShown = false;
     private bool endingStarted = false;
+    private bool isTransitioning = false;
 
     private Coroutine notificationCoroutine;
     private Coroutine phoneOverlayCoroutine;
     private Coroutine endingCoroutine;
+    private Coroutine playNodeCoroutine;
 
     void Awake()
     {
@@ -154,6 +162,7 @@ public class FMVBranchingManager : MonoBehaviour
         HideChoices();
         HideNotificationImmediate();
         HidePhoneOverlayImmediate();
+        HideClipFadeImmediate();
         HideEndingImmediate();
 
         if (startCanvas != null)
@@ -184,6 +193,7 @@ public class FMVBranchingManager : MonoBehaviour
     void Update()
     {
         if (!gameStarted) return;
+        if (isTransitioning) return;
         if (currentNode == null) return;
         if (videoPlayer == null) return;
         if (videoPlayer.clip == null) return;
@@ -275,6 +285,7 @@ public class FMVBranchingManager : MonoBehaviour
         HideNotificationImmediate();
         HidePhoneOverlayImmediate();
         HideEndingImmediate();
+        HideClipFadeImmediate();
 
         if (videoPlayer != null)
         {
@@ -288,11 +299,30 @@ public class FMVBranchingManager : MonoBehaviour
 
     public void PlayNode(string nodeId)
     {
+        if (playNodeCoroutine != null)
+            StopCoroutine(playNodeCoroutine);
+
+        playNodeCoroutine = StartCoroutine(PlayNodeRoutine(nodeId));
+    }
+
+    private IEnumerator PlayNodeRoutine(string nodeId)
+    {
         if (!nodeLookup.ContainsKey(nodeId))
         {
             Debug.LogError("Node not found: " + nodeId);
-            return;
+            yield break;
         }
+
+        isTransitioning = true;
+
+        bool shouldFade = useClipFade && currentNode != null && gameStarted && !endingStarted;
+
+        HideChoices();
+        HideNotificationImmediate();
+        HidePhoneOverlayImmediate();
+
+        if (shouldFade)
+            yield return StartCoroutine(FadeClipOverlay(0f, 1f, clipFadeTime));
 
         currentNode = nodeLookup[nodeId];
 
@@ -301,21 +331,20 @@ public class FMVBranchingManager : MonoBehaviour
         phoneOverlayShown = false;
         endingStarted = false;
 
-        HideChoices();
-        HideNotificationImmediate();
-        HidePhoneOverlayImmediate();
         HideEndingImmediate();
 
         if (videoPlayer == null)
         {
             Debug.LogError("VideoPlayer is not assigned.");
-            return;
+            isTransitioning = false;
+            yield break;
         }
 
         if (currentNode.videoClip == null)
         {
             Debug.LogError("Video clip missing on node: " + nodeId);
-            return;
+            isTransitioning = false;
+            yield break;
         }
 
         videoPlayer.Stop();
@@ -324,6 +353,77 @@ public class FMVBranchingManager : MonoBehaviour
         videoPlayer.Play();
 
         Debug.Log("Now playing node: " + nodeId);
+
+        if (shouldFade)
+        {
+            yield return new WaitForSeconds(0.05f);
+            yield return StartCoroutine(FadeClipOverlay(1f, 0f, clipFadeTime));
+        }
+        else
+        {
+            HideClipFadeImmediate();
+        }
+
+        isTransitioning = false;
+        playNodeCoroutine = null;
+    }
+
+    private IEnumerator FadeClipOverlay(float from, float to, float duration)
+    {
+        if (clipFadeOverlay == null)
+            yield break;
+
+        if (clipFadeCanvasGroup == null)
+            clipFadeCanvasGroup = clipFadeOverlay.GetComponent<CanvasGroup>();
+
+        if (clipFadeCanvasGroup == null)
+            clipFadeCanvasGroup = clipFadeOverlay.AddComponent<CanvasGroup>();
+
+        clipFadeOverlay.SetActive(true);
+        clipFadeCanvasGroup.interactable = false;
+        clipFadeCanvasGroup.blocksRaycasts = true;
+
+        if (duration <= 0f)
+        {
+            clipFadeCanvasGroup.alpha = to;
+
+            if (to <= 0f)
+            {
+                clipFadeCanvasGroup.blocksRaycasts = false;
+                clipFadeOverlay.SetActive(false);
+            }
+
+            yield break;
+        }
+
+        clipFadeCanvasGroup.alpha = from;
+
+        for (float t = 0; t < duration; t += Time.deltaTime)
+        {
+            clipFadeCanvasGroup.alpha = Mathf.Lerp(from, to, t / duration);
+            yield return null;
+        }
+
+        clipFadeCanvasGroup.alpha = to;
+
+        if (to <= 0f)
+        {
+            clipFadeCanvasGroup.blocksRaycasts = false;
+            clipFadeOverlay.SetActive(false);
+        }
+    }
+
+    private void HideClipFadeImmediate()
+    {
+        if (clipFadeOverlay != null)
+            clipFadeOverlay.SetActive(false);
+
+        if (clipFadeCanvasGroup != null)
+        {
+            clipFadeCanvasGroup.alpha = 0f;
+            clipFadeCanvasGroup.blocksRaycasts = false;
+            clipFadeCanvasGroup.interactable = false;
+        }
     }
 
     private void ShowChoices()
@@ -773,6 +873,9 @@ public class FMVBranchingManager : MonoBehaviour
     private void OnVideoFinished(VideoPlayer vp)
     {
         if (currentNode == null)
+            return;
+
+        if (isTransitioning)
             return;
 
         if (currentNode.hasChoices)
