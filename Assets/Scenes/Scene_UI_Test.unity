@@ -1455,8 +1455,8 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4281479730
-  m_fontColor: {r: 0.19607843, g: 0.19607843, b: 0.19607843, a: 1}
+    rgba: 4294967295
+  m_fontColor: {r: 1, g: 1, b: 1, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -4851,24 +4851,24 @@ MonoBehaviour:
   startNodeId: opening
   nodes:
   - nodeId: opening
-    videoClip: {fileID: 32900000, guid: 366d5fcd05dbb5b478945010fb82a4f1, type: 3}
+    videoClip: {fileID: 32900000, guid: cf77ea42f154d79459c520b2a96240cf, type: 3}
     hasChoices: 1
-    showChoicesAtSeconds: 1
+    showChoicesAtSeconds: 10.9
     nextNodeId: 
     choice1:
-      choiceText: Chill bij vriend
+      choiceText: Chillen bij vriend
       targetNodeId: joran_start
     choice2:
-      choiceText: McDa
+      choiceText: McDonalds
       targetNodeId: mcda_start
     choice3:
       choiceText: Pro tikkertje
       targetNodeId: tikkertje_start
-    showNotification: 0
-    notificationAtSeconds: 3
+    showNotification: 1
+    notificationAtSeconds: 8
     notificationDuration: 3
     notificationHeader: "Groupchat \u2022 now"
-    notificationMessage: New story available.
+    notificationMessage: Ga je komen?
     showPhoneOverlay: 0
     phoneOverlayAtSeconds: 0.2
     phoneOverlayDuration: 3
@@ -4922,35 +4922,6 @@ MonoBehaviour:
     choice3:
       choiceText: Meedoen met de foto
       targetNodeId: mcda_photo
-    showNotification: 0
-    notificationAtSeconds: 3
-    notificationDuration: 3
-    notificationHeader: "Groupchat \u2022 now"
-    notificationMessage: New story available.
-    showPhoneOverlay: 0
-    phoneOverlayAtSeconds: 0.2
-    phoneOverlayDuration: 3
-    phoneOverlayHeader: Groupchat
-    phoneOverlayMessage: You opened your phone.
-    timedPhoneMessages: []
-    showEndingOnVideoEnd: 0
-    endingFadeInTime: 0.8
-    showEndingButtonsOnComplete: 1
-    endingTextParts: []
-  - nodeId: tikkertje_start
-    videoClip: {fileID: 32900000, guid: e58409cd9b2693b4d90fb8c648ba1432, type: 3}
-    hasChoices: 1
-    showChoicesAtSeconds: 5
-    nextNodeId: 
-    choice1:
-      choiceText: tikkertje_join
-      targetNodeId: 
-    choice2:
-      choiceText: tikkertje_wait
-      targetNodeId: 
-    choice3:
-      choiceText: 
-      targetNodeId: 
     showNotification: 0
     notificationAtSeconds: 3
     notificationDuration: 3
@@ -5176,10 +5147,19 @@ MonoBehaviour:
     notificationMessage: New story available.
     showPhoneOverlay: 1
     phoneOverlayAtSeconds: 0.2
-    phoneOverlayDuration: 8
+    phoneOverlayDuration: 9
     phoneOverlayHeader: Drive through boys
-    phoneOverlayMessage: broo je mist dees echt
-    timedPhoneMessages: []
+    phoneOverlayMessage: 
+    timedPhoneMessages:
+    - delay: 0
+      sender: Frietzak
+      message: broo je mist dees echt
+    - delay: 3
+      sender: Frietzak
+      message: Er is geen enkele saus uitgelopen lol
+    - delay: 6
+      sender: Frietzak
+      message: En die frietjes zijn ook echt lekker.
     showEndingOnVideoEnd: 0
     endingFadeInTime: 0.8
     showEndingButtonsOnComplete: 1
@@ -5435,6 +5415,318 @@ MonoBehaviour:
       lineFadeTime: 0.35
       pauseAfter: 0
       keepOnScreen: 1
+  - nodeId: tikkertje_start
+    videoClip: {fileID: 32900000, guid: ad68f2c891ea3e344ae97e5e205a5979, type: 3}
+    hasChoices: 0
+    showChoicesAtSeconds: 0
+    nextNodeId: tikk_intro2
+    choice1:
+      choiceText: 
+      targetNodeId: 
+    choice2:
+      choiceText: 
+      targetNodeId: 
+    choice3:
+      choiceText: 
+      targetNodeId: 
+    showNotification: 0
+    notificationAtSeconds: 3
+    notificationDuration: 3
+    notificationHeader: "Groupchat \u2022 now"
+    notificationMessage: New story available.
+    showPhoneOverlay: 0
+    phoneOverlayAtSeconds: 0.2
+    phoneOverlayDuration: 3
+    phoneOverlayHeader: Groupchat
+    phoneOverlayMessage: You opened your phone.
+    timedPhoneMessages: []
+    showEndingOnVideoEnd: 0
+    endingFadeInTime: 0.8
+    showEndingButtonsOnComplete: 1
+    endingTextParts: []
+  - nodeId: tikk_intro2
+    videoClip: {fileID: 32900000, guid: 03d4fedc419d802469e21b38c46d952f, type: 3}
+    hasChoices: 0
+    showChoicesAtSeconds: 0
+    nextNodeId: tikk_gsmoption
+    choice1:
+      choiceText: 
+      targetNodeId: 
+    choice2:
+      choiceText: 
+      targetNodeId: 
+    choice3:
+      choiceText: 
+      targetNodeId: 
+    showNotification: 0
+    notificationAtSeconds: 3
+    notificationDuration: 3
+    notificationHeader: "Groupchat \u2022 now"
+    notificationMessage: 
+    showPhoneOverlay: 0
+    phoneOverlayAtSeconds: 0.2
+    phoneOverlayDuration: 3
+    phoneOverlayHeader: Groupchat
+    phoneOverlayMessage: You opened your phone.
+    timedPhoneMessages: []
+    showEndingOnVideoEnd: 0
+    endingFadeInTime: 0.8
+    showEndingButtonsOnComplete: 1
+    endingTextParts: []
+  - nodeId: tikk_gsmoption
+    videoClip: {fileID: 32900000, guid: 58cde8429056d3d4686eae8f54c69d9b, type: 3}
+    hasChoices: 1
+    showChoicesAtSeconds: 2.5
+    nextNodeId: 
+    choice1:
+      choiceText: Kijk snel
+      targetNodeId: tikk_gsmop
+    choice2:
+      choiceText: 
+      targetNodeId: 
+    choice3:
+      choiceText: Focus op het spel
+      targetNodeId: tikk_gsmnietop
+    showNotification: 1
+    notificationAtSeconds: 1.5
+    notificationDuration: 3
+    notificationHeader: "Groupchat \u2022 now"
+    notificationMessage: McDo was eigenlijk beter dan verwacht.
+    showPhoneOverlay: 0
+    phoneOverlayAtSeconds: 0.2
+    phoneOverlayDuration: 3
+    phoneOverlayHeader: Groupchat
+    phoneOverlayMessage: You opened your phone.
+    timedPhoneMessages: []
+    showEndingOnVideoEnd: 0
+    endingFadeInTime: 0.8
+    showEndingButtonsOnComplete: 1
+    endingTextParts: []
+  - nodeId: tikk_gsmop
+    videoClip: {fileID: 32900000, guid: df730e57c53c68d44bfa36247d713933, type: 3}
+    hasChoices: 0
+    showChoicesAtSeconds: 0
+    nextNodeId: tikkscene2slecht
+    choice1:
+      choiceText: 
+      targetNodeId: 
+    choice2:
+      choiceText: 
+      targetNodeId: 
+    choice3:
+      choiceText: 
+      targetNodeId: 
+    showNotification: 0
+    notificationAtSeconds: 3
+    notificationDuration: 3
+    notificationHeader: "Groupchat \u2022 now"
+    notificationMessage: New story available.
+    showPhoneOverlay: 1
+    phoneOverlayAtSeconds: 0.2
+    phoneOverlayDuration: 4
+    phoneOverlayHeader: Drive Through Boys
+    phoneOverlayMessage: 
+    timedPhoneMessages:
+    - delay: 0
+      sender: Fritzak
+      message: McDo was eigenlijk beter dan verwacht.
+    - delay: 1
+      sender: Fritzak
+      message: En de sauzen hadden ook geen lekprobleem lol
+    - delay: 3
+      sender: Fritzak
+      message: Je moest die nieuwe saus echt proeven!
+    showEndingOnVideoEnd: 0
+    endingFadeInTime: 0.8
+    showEndingButtonsOnComplete: 1
+    endingTextParts: []
+  - nodeId: tikk_gsmnietop
+    videoClip: {fileID: 32900000, guid: 7af4d35dd7cc9c94ea82492007a2dc44, type: 3}
+    hasChoices: 0
+    showChoicesAtSeconds: 0
+    nextNodeId: tikkscene2goed
+    choice1:
+      choiceText: 
+      targetNodeId: 
+    choice2:
+      choiceText: 
+      targetNodeId: 
+    choice3:
+      choiceText: 
+      targetNodeId: 
+    showNotification: 0
+    notificationAtSeconds: 3
+    notificationDuration: 3
+    notificationHeader: "Groupchat \u2022 now"
+    notificationMessage: New story available.
+    showPhoneOverlay: 0
+    phoneOverlayAtSeconds: 0.2
+    phoneOverlayDuration: 3
+    phoneOverlayHeader: Groupchat
+    phoneOverlayMessage: You opened your phone.
+    timedPhoneMessages: []
+    showEndingOnVideoEnd: 0
+    endingFadeInTime: 0.8
+    showEndingButtonsOnComplete: 1
+    endingTextParts: []
+  - nodeId: tikkscene2slecht
+    videoClip: {fileID: 32900000, guid: 732bce6e0b2bf4549ae8d82688308eac, type: 3}
+    hasChoices: 0
+    showChoicesAtSeconds: 0
+    nextNodeId: tikkscene3check
+    choice1:
+      choiceText: 
+      targetNodeId: 
+    choice2:
+      choiceText: 
+      targetNodeId: 
+    choice3:
+      choiceText: 
+      targetNodeId: 
+    showNotification: 0
+    notificationAtSeconds: 3
+    notificationDuration: 3
+    notificationHeader: "Groupchat \u2022 now"
+    notificationMessage: New story available.
+    showPhoneOverlay: 0
+    phoneOverlayAtSeconds: 0.2
+    phoneOverlayDuration: 3
+    phoneOverlayHeader: Groupchat
+    phoneOverlayMessage: You opened your phone.
+    timedPhoneMessages: []
+    showEndingOnVideoEnd: 0
+    endingFadeInTime: 0.8
+    showEndingButtonsOnComplete: 1
+    endingTextParts: []
+  - nodeId: tikkscene2goed
+    videoClip: {fileID: 32900000, guid: cd5cb4604b266ef4fb217842f3f68acc, type: 3}
+    hasChoices: 0
+    showChoicesAtSeconds: 0
+    nextNodeId: tikkscene3check
+    choice1:
+      choiceText: 
+      targetNodeId: 
+    choice2:
+      choiceText: 
+      targetNodeId: 
+    choice3:
+      choiceText: 
+      targetNodeId: 
+    showNotification: 0
+    notificationAtSeconds: 3
+    notificationDuration: 3
+    notificationHeader: "Groupchat \u2022 now"
+    notificationMessage: New story available.
+    showPhoneOverlay: 0
+    phoneOverlayAtSeconds: 0.2
+    phoneOverlayDuration: 3
+    phoneOverlayHeader: Groupchat
+    phoneOverlayMessage: You opened your phone.
+    timedPhoneMessages: []
+    showEndingOnVideoEnd: 0
+    endingFadeInTime: 0.8
+    showEndingButtonsOnComplete: 1
+    endingTextParts: []
+  - nodeId: tikkscene3check
+    videoClip: {fileID: 32900000, guid: a51e043564213144595d18ef2a04e0a5, type: 3}
+    hasChoices: 1
+    showChoicesAtSeconds: 0
+    nextNodeId: 
+    choice1:
+      choiceText: Check gsm
+      targetNodeId: tikkscene3gsm
+    choice2:
+      choiceText: 
+      targetNodeId: 
+    choice3:
+      choiceText: Check gsm niet
+      targetNodeId: tikkscene3niet
+    showNotification: 1
+    notificationAtSeconds: 1
+    notificationDuration: 3
+    notificationHeader: "Groupchat \u2022 now"
+    notificationMessage: Yoo, als je tijd hebt moete we effe iets bespreken.
+    showPhoneOverlay: 0
+    phoneOverlayAtSeconds: 0.2
+    phoneOverlayDuration: 3
+    phoneOverlayHeader: Groupchat
+    phoneOverlayMessage: 
+    timedPhoneMessages: []
+    showEndingOnVideoEnd: 0
+    endingFadeInTime: 0.8
+    showEndingButtonsOnComplete: 1
+    endingTextParts: []
+  - nodeId: tikkscene3gsm
+    videoClip: {fileID: 32900000, guid: 8338705aff61fa24ea4f380a0acbd3da, type: 3}
+    hasChoices: 0
+    showChoicesAtSeconds: 0
+    nextNodeId: 
+    choice1:
+      choiceText: 
+      targetNodeId: 
+    choice2:
+      choiceText: 
+      targetNodeId: 
+    choice3:
+      choiceText: 
+      targetNodeId: 
+    showNotification: 0
+    notificationAtSeconds: 3
+    notificationDuration: 3
+    notificationHeader: "Groupchat \u2022 now"
+    notificationMessage: New story available.
+    showPhoneOverlay: 1
+    phoneOverlayAtSeconds: 0.2
+    phoneOverlayDuration: 8
+    phoneOverlayHeader: Groupchat
+    phoneOverlayMessage: 
+    timedPhoneMessages:
+    - delay: 0
+      sender: ChillGuy
+      message: Yoo, als je tijd hebt moete we effe iets bespreken.
+    - delay: 2
+      sender: ChillGuy
+      message: Ik heb oprecht een geniaal idee bedacht!
+    - delay: 4
+      sender: ChillGuy
+      message: Kort gezegd is het eigenlijk gewoon een documentaire... MAAR OVER
+        SAUS!!!
+    - delay: 6
+      sender: ChillGuy
+      message: Ik lijk mss nu gek maar met de juiste edits zal dit perfect zijn!
+    showEndingOnVideoEnd: 1
+    endingFadeInTime: 0.8
+    showEndingButtonsOnComplete: 1
+    endingTextParts: []
+  - nodeId: tikkscene3niet
+    videoClip: {fileID: 32900000, guid: b218eb427f11a864e83d56e1493a59a1, type: 3}
+    hasChoices: 0
+    showChoicesAtSeconds: 0
+    nextNodeId: 
+    choice1:
+      choiceText: 
+      targetNodeId: 
+    choice2:
+      choiceText: 
+      targetNodeId: 
+    choice3:
+      choiceText: 
+      targetNodeId: 
+    showNotification: 0
+    notificationAtSeconds: 3
+    notificationDuration: 3
+    notificationHeader: "Groupchat \u2022 now"
+    notificationMessage: New story available.
+    showPhoneOverlay: 0
+    phoneOverlayAtSeconds: 0.2
+    phoneOverlayDuration: 3
+    phoneOverlayHeader: Groupchat
+    phoneOverlayMessage: You opened your phone.
+    timedPhoneMessages: []
+    showEndingOnVideoEnd: 1
+    endingFadeInTime: 0.8
+    showEndingButtonsOnComplete: 1
+    endingTextParts: []
 --- !u!4 &1670237935
 Transform:
   m_ObjectHideFlags: 0
@@ -6221,8 +6513,8 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4281479730
-  m_fontColor: {r: 0.19607843, g: 0.19607843, b: 0.19607843, a: 1}
+    rgba: 4294967295
+  m_fontColor: {r: 1, g: 1, b: 1, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
