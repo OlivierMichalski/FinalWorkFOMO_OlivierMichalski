@@ -4911,7 +4911,7 @@ MonoBehaviour:
   - nodeId: mcda_start
     videoClip: {fileID: 32900000, guid: eca5edc75c51f2046ad9b7e6abb77215, type: 3}
     hasChoices: 1
-    showChoicesAtSeconds: 30
+    showChoicesAtSeconds: 31
     nextNodeId: 
     choice1:
       choiceText: Ja gewoon chillen is nice
@@ -5730,7 +5730,7 @@ MonoBehaviour:
   - nodeId: Mcdo_chill
     videoClip: {fileID: 32900000, guid: 1fdfd46991fcbef41b21eedcd0d2031d, type: 3}
     hasChoices: 1
-    showChoicesAtSeconds: 20
+    showChoicesAtSeconds: 21.5
     nextNodeId: 
     choice1:
       choiceText: Wacht, ik kijk snel
@@ -5788,7 +5788,7 @@ MonoBehaviour:
   - nodeId: Mcdo_gaan2
     videoClip: {fileID: 32900000, guid: 41579a03bd0527f41aa14ebe073a5d12, type: 3}
     hasChoices: 1
-    showChoicesAtSeconds: 28
+    showChoicesAtSeconds: 29.5
     nextNodeId: 
     choice1:
       choiceText: Wacht, ik kijk snel
@@ -5817,7 +5817,7 @@ MonoBehaviour:
   - nodeId: Mcdo_gsm1
     videoClip: {fileID: 32900000, guid: 89f64f63f613a364e94dafeb841a9ee1, type: 3}
     hasChoices: 1
-    showChoicesAtSeconds: 32
+    showChoicesAtSeconds: 32.5
     nextNodeId: 
     choice1:
       choiceText: Ja, ik snap wat je bedoelt
@@ -5846,7 +5846,7 @@ MonoBehaviour:
   - nodeId: Mcdo_laat1
     videoClip: {fileID: 32900000, guid: 2e044127abbe59540a0299bbc670cd04, type: 3}
     hasChoices: 1
-    showChoicesAtSeconds: 27
+    showChoicesAtSeconds: 28.5
     nextNodeId: 
     choice1:
       choiceText: Ja, ik snap wat je bedoelt
@@ -5856,7 +5856,7 @@ MonoBehaviour:
       targetNodeId: 
     choice3:
       choiceText: Nog ergens gaan?
-      targetNodeId: Mcdo_gaan2
+      targetNodeId: Mcdo_gaan3
     showNotification: 0
     notificationAtSeconds: 3
     notificationDuration: 3
@@ -5875,7 +5875,7 @@ MonoBehaviour:
   - nodeId: Mcdo_snap
     videoClip: {fileID: 32900000, guid: 45b73e647bc1fa24b9d238516a868efd, type: 3}
     hasChoices: 1
-    showChoicesAtSeconds: 14
+    showChoicesAtSeconds: 15
     nextNodeId: 
     choice1:
       choiceText: Geef score
@@ -5901,10 +5901,10 @@ MonoBehaviour:
     endingFadeInTime: 0.8
     showEndingButtonsOnComplete: 0
     endingTextParts: []
-  - nodeId: Mcdo_gaan2
+  - nodeId: Mcdo_gaan3
     videoClip: {fileID: 32900000, guid: 3c946993a2c0c274e901f88a6042e138, type: 3}
     hasChoices: 1
-    showChoicesAtSeconds: 21
+    showChoicesAtSeconds: 22
     nextNodeId: 
     choice1:
       choiceText: Geef score
@@ -5950,6 +5950,35 @@ MonoBehaviour:
     notificationHeader: "Groupchat \u2022 now"
     notificationMessage: New story available.
     showPhoneOverlay: 0
+    phoneOverlayAtSeconds: 0.2
+    phoneOverlayDuration: 3
+    phoneOverlayHeader: Groupchat
+    phoneOverlayMessage: You opened your phone.
+    timedPhoneMessages: []
+    showEndingOnVideoEnd: 1
+    endingFadeInTime: 0.8
+    showEndingButtonsOnComplete: 1
+    endingTextParts: []
+  - nodeId: Mcdo_check3
+    videoClip: {fileID: 32900000, guid: 40a8ea239226f7847833500bc5afc2cc, type: 3}
+    hasChoices: 0
+    showChoicesAtSeconds: 0
+    nextNodeId: 
+    choice1:
+      choiceText: 
+      targetNodeId: 
+    choice2:
+      choiceText: 
+      targetNodeId: 
+    choice3:
+      choiceText: 
+      targetNodeId: 
+    showNotification: 0
+    notificationAtSeconds: 3
+    notificationDuration: 3
+    notificationHeader: "Groupchat \u2022 now"
+    notificationMessage: New story available.
+    showPhoneOverlay: 1
     phoneOverlayAtSeconds: 0.2
     phoneOverlayDuration: 3
     phoneOverlayHeader: Groupchat
