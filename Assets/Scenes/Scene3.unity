@@ -5334,10 +5334,57 @@ MonoBehaviour:
     phoneOverlayHeader: Groupchat
     phoneOverlayMessage: You opened your phone.
     timedPhoneMessages: []
-    showEndingOnVideoEnd: 0
+    showEndingOnVideoEnd: 1
     endingFadeInTime: 0.8
     showEndingButtonsOnComplete: 1
-    endingTextParts: []
+    endingTextParts:
+    - text: 'Misschien was ergens anders meer lawaai.
+
+        Misschien was ergens
+        anders meer gebeurd'
+      displayDuration: 2
+      fadeTime: 0.5
+      revealLineByLine: 1
+      fadeInEachLine: 1
+      lineDelay: 0.75
+      lineFadeTime: 0.35
+      pauseAfter: 0.5
+      keepOnScreen: 0
+    - text: 'Maar deze avond was niet leeg.
+
+        Hij was alleen stiller.
+
+        En
+        misschien daarom voelde dat net echter.'
+      displayDuration: 2
+      fadeTime: 0.5
+      revealLineByLine: 1
+      fadeInEachLine: 1
+      lineDelay: 0.75
+      lineFadeTime: 0.35
+      pauseAfter: 0.5
+      keepOnScreen: 0
+    - text: 'Je kan niet overal zijn.
+
+        Maar je kan wel ergens echt aanwezig
+        zijn.'
+      displayDuration: 2
+      fadeTime: 0.5
+      revealLineByLine: 0
+      fadeInEachLine: 0
+      lineDelay: 0
+      lineFadeTime: 0
+      pauseAfter: 0
+      keepOnScreen: 0
+    - text: Ben je blij met hoe je je aandacht hebt gespendeerd?
+      displayDuration: 2
+      fadeTime: 0.5
+      revealLineByLine: 0
+      fadeInEachLine: 0
+      lineDelay: 0
+      lineFadeTime: 0
+      pauseAfter: 0
+      keepOnScreen: 1
   - nodeId: ChillJ_EndingSlecht
     videoClip: {fileID: 32900000, guid: c94d1bb708a98df43aedbbaceff0455e, type: 3}
     hasChoices: 0
@@ -5697,7 +5744,55 @@ MonoBehaviour:
     showEndingOnVideoEnd: 1
     endingFadeInTime: 0.8
     showEndingButtonsOnComplete: 1
-    endingTextParts: []
+    endingTextParts:
+    - text: "FOMO is niet het probleem. Het probleem is wanneer je nergens meer \xE9cht
+        bent. Je bent amper nog in het 'nu."
+      displayDuration: 4
+      fadeTime: 0.6
+      revealLineByLine: 0
+      fadeInEachLine: 1
+      lineDelay: 0
+      lineFadeTime: 0.35
+      pauseAfter: 0.5
+      keepOnScreen: 0
+    - text: 'Hij wist wat er overal gebeurd was.
+
+        Behalve waar hij zelf was.
+
+
+        Hij
+        las de berichten.
+
+
+        Maar van zijn eigen avond bleef vooral over dat
+        hij telkens even weg was.'
+      displayDuration: 2.5
+      fadeTime: 0.6
+      revealLineByLine: 1
+      fadeInEachLine: 1
+      lineDelay: 0.75
+      lineFadeTime: 0.35
+      pauseAfter: 0.5
+      keepOnScreen: 0
+    - text: Hij was zo bang om iets te missen, dat het moment waarin hij zelf stond
+        langzaam verloren ging.
+      displayDuration: 4
+      fadeTime: 0.6
+      revealLineByLine: 0
+      fadeInEachLine: 1
+      lineDelay: 0
+      lineFadeTime: 0.35
+      pauseAfter: 0.5
+      keepOnScreen: 0
+    - text: Ben je blij met hoe je je aandacht hebt gespendeerd?
+      displayDuration: 2
+      fadeTime: 0.8
+      revealLineByLine: 0
+      fadeInEachLine: 1
+      lineDelay: 0
+      lineFadeTime: 0.35
+      pauseAfter: 0
+      keepOnScreen: 1
   - nodeId: tikkscene3niet
     videoClip: {fileID: 32900000, guid: b218eb427f11a864e83d56e1493a59a1, type: 3}
     hasChoices: 0
@@ -5726,7 +5821,54 @@ MonoBehaviour:
     showEndingOnVideoEnd: 1
     endingFadeInTime: 0.8
     showEndingButtonsOnComplete: 1
-    endingTextParts: []
+    endingTextParts:
+    - text: 'Misschien was ergens anders meer lawaai.
+
+        Misschien was ergens
+        anders meer gebeurd'
+      displayDuration: 2
+      fadeTime: 0.5
+      revealLineByLine: 1
+      fadeInEachLine: 1
+      lineDelay: 0.75
+      lineFadeTime: 0.35
+      pauseAfter: 0.5
+      keepOnScreen: 0
+    - text: 'Maar deze avond was niet leeg.
+
+        Hij was alleen stiller.
+
+        En
+        misschien daarom voelde dat net echter.'
+      displayDuration: 2
+      fadeTime: 0.5
+      revealLineByLine: 1
+      fadeInEachLine: 1
+      lineDelay: 0.75
+      lineFadeTime: 0.35
+      pauseAfter: 0.5
+      keepOnScreen: 0
+    - text: 'Je kan niet overal zijn.
+
+        Maar je kan wel ergens echt aanwezig
+        zijn.'
+      displayDuration: 2
+      fadeTime: 0.5
+      revealLineByLine: 0
+      fadeInEachLine: 0
+      lineDelay: 0
+      lineFadeTime: 0
+      pauseAfter: 0
+      keepOnScreen: 0
+    - text: Ben je blij met hoe je je aandacht hebt gespendeerd?
+      displayDuration: 2
+      fadeTime: 0.5
+      revealLineByLine: 0
+      fadeInEachLine: 0
+      lineDelay: 0
+      lineFadeTime: 0
+      pauseAfter: 0
+      keepOnScreen: 1
   - nodeId: Mcdo_chill
     videoClip: {fileID: 32900000, guid: 1fdfd46991fcbef41b21eedcd0d2031d, type: 3}
     hasChoices: 1
@@ -5745,7 +5887,7 @@ MonoBehaviour:
     notificationAtSeconds: 18
     notificationDuration: 3
     notificationHeader: "Groupchat \u2022 now"
-    notificationMessage: New story available.
+    notificationMessage: Je gaat dees nooit geloven!
     showPhoneOverlay: 0
     phoneOverlayAtSeconds: 0.2
     phoneOverlayDuration: 3
@@ -5836,9 +5978,24 @@ MonoBehaviour:
     showPhoneOverlay: 1
     phoneOverlayAtSeconds: 0.2
     phoneOverlayDuration: 9
-    phoneOverlayHeader: Groupchat
-    phoneOverlayMessage: You opened your phone.
-    timedPhoneMessages: []
+    phoneOverlayHeader: PRO TIKKERTJE
+    phoneOverlayMessage: 
+    timedPhoneMessages:
+    - delay: 0
+      sender: Yoni
+      message: Je gaat dees nooit geloven!
+    - delay: 2
+      sender: Yoni
+      message: Hij gaat gewoon tegen een pro tikker spelen!
+    - delay: 4
+      sender: Yoni
+      message: Het begint nu... SPANNEND!
+    - delay: 6
+      sender: Yoni
+      message: HIJ HEEFT HEM ECHT GERAAKT WAATTT
+    - delay: 8
+      sender: Yoni
+      message: JE MOEST HIER ECHT ZIJN GEWEEST!
     showEndingOnVideoEnd: 0
     endingFadeInTime: 0.8
     showEndingButtonsOnComplete: 0
@@ -5890,7 +6047,7 @@ MonoBehaviour:
     notificationAtSeconds: 11
     notificationDuration: 3
     notificationHeader: "Groupchat \u2022 now"
-    notificationMessage: New story available.
+    notificationMessage: Yo, heb je effe tijd om te praten?
     showPhoneOverlay: 0
     phoneOverlayAtSeconds: 0.2
     phoneOverlayDuration: 3
@@ -5958,7 +6115,54 @@ MonoBehaviour:
     showEndingOnVideoEnd: 1
     endingFadeInTime: 0.8
     showEndingButtonsOnComplete: 1
-    endingTextParts: []
+    endingTextParts:
+    - text: 'Misschien was ergens anders meer lawaai.
+
+        Misschien was ergens
+        anders meer gebeurd'
+      displayDuration: 2
+      fadeTime: 0.5
+      revealLineByLine: 1
+      fadeInEachLine: 1
+      lineDelay: 0.75
+      lineFadeTime: 0.35
+      pauseAfter: 0.5
+      keepOnScreen: 0
+    - text: 'Maar deze avond was niet leeg.
+
+        Hij was alleen stiller.
+
+        En
+        misschien daarom voelde dat net echter.'
+      displayDuration: 2
+      fadeTime: 0.5
+      revealLineByLine: 1
+      fadeInEachLine: 1
+      lineDelay: 0.75
+      lineFadeTime: 0.35
+      pauseAfter: 0.5
+      keepOnScreen: 0
+    - text: 'Je kan niet overal zijn.
+
+        Maar je kan wel ergens echt aanwezig
+        zijn.'
+      displayDuration: 2
+      fadeTime: 0.5
+      revealLineByLine: 0
+      fadeInEachLine: 0
+      lineDelay: 0
+      lineFadeTime: 0
+      pauseAfter: 0
+      keepOnScreen: 0
+    - text: Ben je blij met hoe je je aandacht hebt gespendeerd?
+      displayDuration: 2
+      fadeTime: 0.5
+      revealLineByLine: 0
+      fadeInEachLine: 0
+      lineDelay: 0
+      lineFadeTime: 0
+      pauseAfter: 0
+      keepOnScreen: 1
   - nodeId: Mcdo_check3
     videoClip: {fileID: 32900000, guid: 40a8ea239226f7847833500bc5afc2cc, type: 3}
     hasChoices: 0
@@ -5982,12 +6186,66 @@ MonoBehaviour:
     phoneOverlayAtSeconds: 0.2
     phoneOverlayDuration: 3
     phoneOverlayHeader: Groupchat
-    phoneOverlayMessage: You opened your phone.
-    timedPhoneMessages: []
+    phoneOverlayMessage: 
+    timedPhoneMessages:
+    - delay: 0
+      sender: ChillGuy
+      message: Yo, heb je effe tijd om te praten?
+    - delay: 2
+      sender: ChillGuy
+      message: Gaat over een friet documentaire lol
     showEndingOnVideoEnd: 1
     endingFadeInTime: 0.8
     showEndingButtonsOnComplete: 1
-    endingTextParts: []
+    endingTextParts:
+    - text: "FOMO is niet het probleem. Het probleem is wanneer je nergens meer \xE9cht
+        bent. Je bent amper nog in het 'nu."
+      displayDuration: 4
+      fadeTime: 0.6
+      revealLineByLine: 0
+      fadeInEachLine: 1
+      lineDelay: 0
+      lineFadeTime: 0.35
+      pauseAfter: 0.5
+      keepOnScreen: 0
+    - text: 'Hij wist wat er overal gebeurd was.
+
+        Behalve waar hij zelf was.
+
+
+        Hij
+        las de berichten.
+
+
+        Maar van zijn eigen avond bleef vooral over dat
+        hij telkens even weg was.'
+      displayDuration: 2.5
+      fadeTime: 0.6
+      revealLineByLine: 1
+      fadeInEachLine: 1
+      lineDelay: 0.75
+      lineFadeTime: 0.35
+      pauseAfter: 0.5
+      keepOnScreen: 0
+    - text: Hij was zo bang om iets te missen, dat het moment waarin hij zelf stond
+        langzaam verloren ging.
+      displayDuration: 4
+      fadeTime: 0.6
+      revealLineByLine: 0
+      fadeInEachLine: 1
+      lineDelay: 0
+      lineFadeTime: 0.35
+      pauseAfter: 0.5
+      keepOnScreen: 0
+    - text: Ben je blij met hoe je je aandacht hebt gespendeerd?
+      displayDuration: 2
+      fadeTime: 0.8
+      revealLineByLine: 0
+      fadeInEachLine: 1
+      lineDelay: 0
+      lineFadeTime: 0.35
+      pauseAfter: 0
+      keepOnScreen: 1
 --- !u!4 &1670237935
 Transform:
   m_ObjectHideFlags: 0
